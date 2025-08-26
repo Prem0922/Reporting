@@ -1,0 +1,19 @@
+{
+  "customerId": 101,
+  "sourceSystem": "UI_NAVIGATOR",
+  "events": [
+    {
+      "kind": "TEST_RUN",
+      "testCase": {
+        "id": 9999,
+        "title": "Test from unified API",
+        "component": "GATE"
+      },
+      "result": "Pass",
+      "executionDate": "2025-08-22T17:55:00Z",
+      "observedTimeMs": 500,
+      "executedBy": "test-user",
+      "remarks": "Testing unified endpoint"
+    }
+  ]
+}

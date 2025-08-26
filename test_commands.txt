@@ -1,0 +1,50 @@
+# ============================================================================
+# UNIFIED BULK UPLOAD API - TEST COMMANDS
+# ============================================================================
+
+# 1. Health Check
+curl -X GET "http://localhost:5000/api/v1/health"
+
+# 2. Test Unified Bulk Upload (PowerShell)
+# Run this in PowerShell:
+# .\test_unified_api.ps1
+
+# 3. Test Unified Bulk Upload (curl - if you have curl working)
+curl -X POST "http://localhost:5000/api/v1/results" -H "Content-Type: application/json" -d @complete_test_example.json
+
+# 4. Check if data was created
+curl -X GET "http://localhost:5000/api/v1/test-runs"
+curl -X GET "http://localhost:5000/api/v1/requirements"
+curl -X GET "http://localhost:5000/api/v1/test-cases"
+curl -X GET "http://localhost:5000/api/v1/defects"
+
+# 5. Swagger UI
+# Open in browser: http://localhost:5000/api/docs
+
+# ============================================================================
+# QUICK TEST - Single Test Run
+# ============================================================================
+
+# Test with just one test run (copy this to a file called quick_test.json):
+{
+  "customerId": 101,
+  "sourceSystem": "UI_NAVIGATOR",
+  "events": [
+    {
+      "kind": "TEST_RUN",
+      "testCase": {
+        "id": 8888,
+        "title": "Quick test from UI Navigator",
+        "component": "GATE"
+      },
+      "result": "Pass",
+      "executionDate": "2025-08-22T18:30:00Z",
+      "observedTimeMs": 300,
+      "executedBy": "quick-test",
+      "remarks": "Testing unified endpoint"
+    }
+  ]
+}
+
+# Then run:
+# curl -X POST "http://localhost:5000/api/v1/results" -H "Content-Type: application/json" -d @quick_test.json
